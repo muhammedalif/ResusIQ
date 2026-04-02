@@ -1,12 +1,12 @@
 {
-  "name": "ResusIQ",
+  "name": "ResusIQ — CPR CCF Tracker",
   "short_name": "ResusIQ",
-  "description": "Real-time CPR Chest Compression Fraction Monitor",
+  "description": "Real-time CPR Chest Compression Fraction tracker for high-performance resuscitation",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#080c10",
-  "theme_color": "#080c10",
+  "background_color": "#0F6E56",
+  "theme_color": "#0F6E56",
   "icons": [
     {
       "src": "icon-192.png",
@@ -20,5 +20,7 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "categories": ["medical", "health", "utilities"],
+  "lang": "en"
 }
