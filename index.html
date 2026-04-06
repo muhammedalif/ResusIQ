@@ -27,6 +27,7 @@
     --red-main: #E24B4A;
     --red-bg: #FCEBEB;
     --blue-dark: #0C447C;
+    --blue-main: #378ADD;
     --blue-bg: #E6F1FB;
     --purple-dark: #3C3489;
     --purple-bg: #EEEDFE;
@@ -39,7 +40,6 @@
     --gray-900: #1a1a18;
     --radius-sm: 8px;
     --radius-md: 12px;
-    --radius-lg: 16px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body {
@@ -49,8 +49,6 @@
     min-height: 100vh;
     padding-bottom: 2rem;
   }
-
-  /* Header */
   .header {
     background: var(--green-mid);
     color: #fff;
@@ -63,176 +61,90 @@
     z-index: 10;
   }
   .header-left { display: flex; align-items: center; gap: 10px; }
-  .header-logo {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: rgba(255,255,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
+  .header-logo { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; }
   .header-title { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
   .header-sub { font-size: 11px; opacity: 0.75; margin-top: 1px; }
-  .live-badge {
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: #fff;
-  }
-
+  .live-badge { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: #fff; }
   .container { padding: 1rem 1rem 0; max-width: 500px; margin: 0 auto; }
-
-  /* Timer cards */
   .timer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-  .timer-card {
-    background: #fff;
-    border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-md);
-    padding: 0.875rem 1rem;
-    text-align: center;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  .timer-card.active {
-    border-color: var(--green-main);
-    box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
-  }
+  .timer-card { background: #fff; border: 1.5px solid var(--gray-300); border-radius: var(--radius-md); padding: 0.875rem 1rem; text-align: center; transition: border-color 0.3s, box-shadow 0.3s; }
+  .timer-card.code-running { border-color: var(--blue-main); box-shadow: 0 0 0 3px rgba(55,138,221,0.12); }
+  .timer-card.active { border-color: var(--green-main); box-shadow: 0 0 0 3px rgba(29,158,117,0.12); }
   .timer-card.paused { border-color: var(--amber-main); }
   .t-label { font-size: 11px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-  .t-display {
-    font-size: 36px; font-weight: 600; letter-spacing: 0.02em;
-    font-variant-numeric: tabular-nums; color: var(--gray-900);
-  }
+  .t-display { font-size: 36px; font-weight: 600; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--gray-900); }
+  .t-display.blue { color: var(--blue-dark); }
   .t-display.green { color: var(--green-mid); }
-  .t-display.amber { color: var(--amber-mid); }
   .t-sub { font-size: 11px; color: var(--gray-400); margin-top: 4px; min-height: 16px; }
-
-  /* CCF panel */
-  .ccf-panel {
-    background: #fff;
-    border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-md);
-    padding: 0.875rem 1rem;
-    margin-bottom: 12px;
-  }
+  .ccf-panel { background: #fff; border: 1.5px solid var(--gray-300); border-radius: var(--radius-md); padding: 0.875rem 1rem; margin-bottom: 12px; }
   .ccf-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
-  .ccf-big { font-size: 40px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 90px; }
+  .ccf-big { font-size: 40px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 95px; }
   .ccf-big.neutral { color: var(--gray-400); }
   .ccf-big.good { color: var(--green-mid); }
   .ccf-big.warn { color: var(--amber-mid); }
   .ccf-big.bad { color: var(--red-mid); }
   .ccf-meta { flex: 1; }
   .ccf-meta-label { font-size: 11px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
-  .ccf-target {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 12px; color: var(--gray-700);
-  }
+  .ccf-target { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-700); }
   .target-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-main); }
-  .ccf-bar-track {
-    height: 8px; border-radius: 4px; background: var(--gray-200);
-    overflow: hidden; margin-bottom: 4px;
-  }
+  .ccf-bar-track { height: 8px; border-radius: 4px; background: var(--gray-200); overflow: hidden; margin-bottom: 4px; }
   .ccf-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease, background 0.4s; width: 0%; background: var(--gray-400); }
   .ccf-markers { display: flex; justify-content: space-between; font-size: 10px; color: var(--gray-400); }
   .ccf-hint { font-size: 12px; color: var(--gray-500); margin-top: 6px; }
-
-  /* Status */
-  .status-bar {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    font-size: 13px; color: var(--gray-700);
-    background: #fff; border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-sm); padding: 8px 12px;
-    margin-bottom: 12px; min-height: 40px;
-  }
+  .status-bar { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--gray-700); background: #fff; border: 1.5px solid var(--gray-300); border-radius: var(--radius-sm); padding: 8px 12px; margin-bottom: 12px; min-height: 40px; text-align: center; }
   .status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .dot-blue  { background: var(--blue-main);  animation: pulse-blue  1.5s infinite; }
   .dot-green { background: var(--green-main); animation: pulse-green 1.5s infinite; }
   .dot-amber { background: var(--amber-main); animation: pulse-amber 1.5s infinite; }
-  .dot-gray { background: var(--gray-400); }
-  @keyframes pulse-green { 0%,100%{box-shadow:0 0 0 0 rgba(29,158,117,0.4)} 50%{box-shadow:0 0 0 5px rgba(29,158,117,0)} }
-  @keyframes pulse-amber { 0%,100%{box-shadow:0 0 0 0 rgba(239,159,39,0.4)} 50%{box-shadow:0 0 0 5px rgba(239,159,39,0)} }
-
-  /* Buttons */
+  .dot-gray  { background: var(--gray-400); }
+  @keyframes pulse-blue  { 0%,100%{box-shadow:0 0 0 0 rgba(55,138,221,0.4)}  50%{box-shadow:0 0 0 5px rgba(55,138,221,0)} }
+  @keyframes pulse-green { 0%,100%{box-shadow:0 0 0 0 rgba(29,158,117,0.4)}  50%{box-shadow:0 0 0 5px rgba(29,158,117,0)} }
+  @keyframes pulse-amber { 0%,100%{box-shadow:0 0 0 0 rgba(239,159,39,0.4)}  50%{box-shadow:0 0 0 5px rgba(239,159,39,0)} }
   .btn-group { display: grid; gap: 10px; margin-bottom: 12px; }
-  .btn-group.cols2 { grid-template-columns: 1fr 1fr; }
-  .btn-group.cols3 { grid-template-columns: 1fr 1fr 1fr; }
-  .btn {
-    padding: 16px 8px; font-size: 14px; font-weight: 600;
-    border-radius: var(--radius-sm); border: none; cursor: pointer;
-    transition: transform 0.1s, opacity 0.2s;
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    line-height: 1.2;
-  }
+  .cols2 { grid-template-columns: 1fr 1fr; }
+  .btn { padding: 16px 8px; font-size: 13px; font-weight: 600; border-radius: var(--radius-sm); border: none; cursor: pointer; transition: transform 0.1s, opacity 0.2s; display: flex; flex-direction: column; align-items: center; gap: 5px; line-height: 1.2; width: 100%; }
   .btn:active { transform: scale(0.95); }
   .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
-  .btn-icon { font-size: 20px; }
-  .btn-start { background: var(--green-main); color: #fff; font-size: 16px; padding: 18px; }
-  .btn-stop-comp { background: var(--amber-bg); color: var(--amber-dark); }
-  .btn-resume { background: var(--green-bg); color: var(--green-dark); }
-  .btn-end { background: var(--red-bg); color: var(--red-dark); }
-  .btn-reset { background: var(--gray-200); color: var(--gray-700); }
-
-  /* Log */
-  .log-section {
-    background: #fff; border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-md); padding: 0.875rem 1rem;
-    margin-bottom: 12px; display: none;
-  }
+  .btn-icon { font-size: 22px; }
+  .btn-start-code  { background: var(--blue-bg);    color: var(--blue-dark);   font-size: 15px; padding: 18px; }
+  .btn-start-comp  { background: var(--green-main); color: #fff; }
+  .btn-stop-comp   { background: var(--amber-bg);   color: var(--amber-dark); }
+  .btn-resume-comp { background: var(--green-bg);   color: var(--green-dark); }
+  .btn-end         { background: var(--red-bg);     color: var(--red-dark); }
+  .btn-reset       { background: var(--gray-200);   color: var(--gray-700); }
+  .log-section { background: #fff; border: 1.5px solid var(--gray-300); border-radius: var(--radius-md); padding: 0.875rem 1rem; margin-bottom: 12px; display: none; }
   .log-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
   .log-title { font-size: 12px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
   .log-count { font-size: 11px; color: var(--gray-400); background: var(--gray-100); border-radius: 20px; padding: 2px 8px; }
   .log-scroll { max-height: 200px; overflow-y: auto; }
   .log-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .log-table th {
-    text-align: left; color: var(--gray-400); font-weight: 600;
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;
-    padding: 0 6px 6px 0; border-bottom: 1px solid var(--gray-200);
-  }
+  .log-table th { text-align: left; color: var(--gray-400); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 6px 6px 0; border-bottom: 1px solid var(--gray-200); }
   .log-table th:last-child { text-align: right; padding-right: 0; }
   .log-table td { padding: 6px 6px 6px 0; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); vertical-align: middle; }
   .log-table td:last-child { text-align: right; padding-right: 0; }
   .log-table tbody tr:last-child td { border-bottom: none; }
   .ev-pill { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-  .pill-start { background: var(--green-bg); color: var(--green-dark); }
-  .pill-stop { background: var(--amber-bg); color: var(--amber-dark); }
-  .pill-resume { background: var(--blue-bg); color: var(--blue-dark); }
-  .pill-end { background: var(--purple-bg); color: var(--purple-dark); }
-
-  /* Summary */
-  .summary-card {
-    background: #fff; border: 1.5px solid var(--gray-300);
-    border-radius: var(--radius-md); padding: 1rem;
-    margin-bottom: 12px; display: none;
-  }
+  .pill-code   { background: var(--blue-bg);   color: var(--blue-dark); }
+  .pill-start  { background: var(--green-bg);  color: var(--green-dark); }
+  .pill-stop   { background: var(--amber-bg);  color: var(--amber-dark); }
+  .pill-resume { background: #E6F1FB;           color: #185FA5; }
+  .pill-end    { background: var(--purple-bg); color: var(--purple-dark); }
+  .summary-card { background: #fff; border: 1.5px solid var(--gray-300); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 12px; display: none; }
   .summary-card.show { display: block; }
   .summary-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
-  .verdict {
-    border-radius: var(--radius-sm); padding: 10px 14px;
-    font-size: 13px; font-weight: 500; margin-bottom: 12px; line-height: 1.5;
-  }
+  .verdict { border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; font-weight: 500; margin-bottom: 12px; line-height: 1.5; }
   .verdict.good { background: var(--green-bg); color: var(--green-dark); }
   .verdict.warn { background: var(--amber-bg); color: var(--amber-dark); }
-  .verdict.bad { background: var(--red-bg); color: var(--red-dark); }
+  .verdict.bad  { background: var(--red-bg);   color: var(--red-dark); }
   .summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
   .summary-metric { background: var(--gray-100); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
   .sm-label { font-size: 10px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
   .sm-val { font-size: 18px; font-weight: 700; color: var(--gray-900); font-variant-numeric: tabular-nums; }
   .sm-val.good { color: var(--green-mid); }
   .sm-val.warn { color: var(--amber-mid); }
-  .sm-val.bad { color: var(--red-mid); }
-
-  /* Install banner */
-  .install-banner {
-    background: var(--blue-bg); border: 1.5px solid #B5D4F4;
-    border-radius: var(--radius-sm); padding: 10px 14px;
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 12px; font-size: 13px; color: var(--blue-dark);
-  }
-  .install-btn {
-    background: var(--blue-dark); color: #fff; border: none;
-    border-radius: 6px; padding: 6px 12px; font-size: 12px;
-    font-weight: 600; cursor: pointer; flex-shrink: 0; margin-left: 10px;
-  }
+  .sm-val.bad  { color: var(--red-mid); }
+  .install-banner { background: var(--blue-bg); border: 1.5px solid #B5D4F4; border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; font-size: 13px; color: var(--blue-dark); }
+  .install-btn { background: var(--blue-dark); color: #fff; border: none; border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; flex-shrink: 0; margin-left: 10px; }
 </style>
 </head>
 <body>
@@ -245,7 +157,44 @@
       <div class="header-sub">Chest Compression Fraction</div>
     </div>
   </div>
-  <div class="live-badge">LIVE</div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <div class="live-badge">LIVE</div>
+    <button onclick="toggleAbout()" style="background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.35);border-radius:50%;width:28px;height:28px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">i</button>
+  </div>
+</div>
+
+<!-- About modal overlay -->
+<div id="about-overlay" onclick="closeAbout()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:100;align-items:center;justify-content:center;padding:1.5rem;">
+  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:16px;padding:1.5rem;max-width:340px;width:100%;position:relative;">
+    <button onclick="closeAbout()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:20px;color:#888780;cursor:pointer;line-height:1;padding:0;">×</button>
+    <div style="text-align:center;margin-bottom:1.25rem;">
+      <div style="width:56px;height:56px;border-radius:14px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 10px;">❤️</div>
+      <div style="font-size:18px;font-weight:700;color:#0F6E56;letter-spacing:-0.01em;">ResusIQ</div>
+      <div style="font-size:12px;color:#888780;margin-top:2px;">Real-time CPR CCF Tracker</div>
+    </div>
+    <div style="border-top:1px solid #f1efe8;padding-top:1rem;margin-bottom:1rem;">
+      <div style="font-size:11px;color:#888780;text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-bottom:10px;">Developed by</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div style="width:42px;height:42px;border-radius:50%;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#0C447C;flex-shrink:0;">MA</div>
+        <div>
+          <div style="font-size:15px;font-weight:600;color:#1a1a18;">Dr. Muhammed Alif</div>
+          <div style="font-size:12px;color:#888780;margin-top:1px;">Consultant Anaesthesiologist &amp; Intensivist</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:42px;height:42px;border-radius:10px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🏥</div>
+        <div>
+          <div style="font-size:15px;font-weight:600;color:#1a1a18;">HealthionX Medical Solutions</div>
+          <div style="font-size:12px;color:#888780;margin-top:1px;">Healthcare Innovation</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #f1efe8;padding-top:1rem;">
+      <div style="font-size:11px;color:#888780;text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-bottom:8px;">About this app</div>
+      <p style="font-size:13px;color:#5f5e5a;line-height:1.6;">ResusIQ tracks Chest Compression Fraction (CCF) in real time during cardiac arrest resuscitation, helping teams meet the AHA high-performance CPR target of ≥ 80%.</p>
+    </div>
+    <div style="margin-top:1rem;text-align:center;font-size:11px;color:#b4b2a9;">v3.0 · Based on AHA 2020 Guidelines</div>
+  </div>
 </div>
 
 <div class="container">
@@ -257,12 +206,12 @@
 
   <div class="timer-grid">
     <div class="timer-card" id="card-total">
-      <div class="t-label">Total CPR</div>
-      <div class="t-display" id="disp-total">00:00</div>
+      <div class="t-label">Total Code Time</div>
+      <div class="t-display blue" id="disp-total">00:00</div>
       <div class="t-sub" id="sub-total">not started</div>
     </div>
     <div class="timer-card" id="card-comp">
-      <div class="t-label">Compressions</div>
+      <div class="t-label">Compression Time</div>
       <div class="t-display green" id="disp-comp">00:00</div>
       <div class="t-sub" id="sub-comp">—</div>
     </div>
@@ -278,22 +227,32 @@
     </div>
     <div class="ccf-bar-track"><div class="ccf-bar-fill" id="ccf-fill"></div></div>
     <div class="ccf-markers"><span>0%</span><span>60%</span><span>80%</span><span>100%</span></div>
-    <div class="ccf-hint" id="ccf-hint">Start CPR to begin tracking</div>
+    <div class="ccf-hint" id="ccf-hint">Start Code to begin tracking</div>
   </div>
 
   <div class="status-bar">
     <span class="status-dot dot-gray" id="status-dot"></span>
-    <span id="status-txt">Ready — press Start CPR to begin</span>
+    <span id="status-txt">Ready — press Start Code to begin</span>
   </div>
 
-  <!-- Phase: idle -->
+  <!-- idle -->
   <div id="phase-idle" class="btn-group">
-    <button class="btn btn-start" onclick="startCPR()">
-      <span class="btn-icon">▶</span> Start CPR
+    <button class="btn btn-start-code" onclick="startCode()">
+      <span class="btn-icon">🚨</span> Start Code
     </button>
   </div>
 
-  <!-- Phase: running (compressions active) -->
+  <!-- code running, no compressions -->
+  <div id="phase-code" class="btn-group cols2" style="display:none;">
+    <button class="btn btn-start-comp" onclick="startComp()">
+      <span class="btn-icon">💓</span> Start Compressions
+    </button>
+    <button class="btn btn-end" onclick="endCPR()">
+      <span class="btn-icon">⏹</span> End CPR
+    </button>
+  </div>
+
+  <!-- compressions running -->
   <div id="phase-running" class="btn-group cols2" style="display:none;">
     <button class="btn btn-stop-comp" onclick="stopComp()">
       <span class="btn-icon">⏸</span> Stop Compressions
@@ -303,9 +262,9 @@
     </button>
   </div>
 
-  <!-- Phase: paused (compressions paused) -->
+  <!-- compressions paused -->
   <div id="phase-paused" class="btn-group cols2" style="display:none;">
-    <button class="btn btn-resume" onclick="resumeComp()">
+    <button class="btn btn-resume-comp" onclick="resumeComp()">
       <span class="btn-icon">▶</span> Resume Compressions
     </button>
     <button class="btn btn-end" onclick="endCPR()">
@@ -313,14 +272,13 @@
     </button>
   </div>
 
-  <!-- Phase: ended -->
+  <!-- ended -->
   <div id="phase-ended" style="display:none; margin-bottom:12px;">
     <button class="btn btn-reset" style="width:100%; padding:14px;" onclick="resetAll()">
       <span style="font-size:16px;">↺</span> Reset Session
     </button>
   </div>
 
-  <!-- Event Log -->
   <div class="log-section" id="log-section">
     <div class="log-header">
       <span class="log-title">Event Log</span>
@@ -342,44 +300,24 @@
     </div>
   </div>
 
-  <!-- Summary -->
   <div class="summary-card" id="summary-card">
     <div class="summary-title">Session Summary</div>
     <div class="verdict" id="verdict-box"></div>
     <div class="summary-grid">
-      <div class="summary-metric">
-        <div class="sm-label">Final CCF</div>
-        <div class="sm-val" id="s-ccf">—</div>
-      </div>
-      <div class="summary-metric">
-        <div class="sm-label">Total Time</div>
-        <div class="sm-val" id="s-total">—</div>
-      </div>
-      <div class="summary-metric">
-        <div class="sm-label">Comp Time</div>
-        <div class="sm-val" id="s-comp">—</div>
-      </div>
-      <div class="summary-metric">
-        <div class="sm-label">No-flow</div>
-        <div class="sm-val" id="s-noflow">—</div>
-      </div>
-      <div class="summary-metric">
-        <div class="sm-label">Pauses</div>
-        <div class="sm-val" id="s-pauses">—</div>
-      </div>
-      <div class="summary-metric">
-        <div class="sm-label">Cycles</div>
-        <div class="sm-val" id="s-cycles">—</div>
-      </div>
+      <div class="summary-metric"><div class="sm-label">Final CCF</div><div class="sm-val" id="s-ccf">—</div></div>
+      <div class="summary-metric"><div class="sm-label">Total Time</div><div class="sm-val" id="s-total">—</div></div>
+      <div class="summary-metric"><div class="sm-label">Comp Time</div><div class="sm-val" id="s-comp">—</div></div>
+      <div class="summary-metric"><div class="sm-label">No-flow</div><div class="sm-val" id="s-noflow">—</div></div>
+      <div class="summary-metric"><div class="sm-label">Pauses</div><div class="sm-val" id="s-pauses">—</div></div>
+      <div class="summary-metric"><div class="sm-label">Cycles</div><div class="sm-val" id="s-cycles">—</div></div>
     </div>
   </div>
 
 </div>
 
 <script>
-var totalSec=0, compSec=0;
-var totalInt=null, compInt=null;
-var pauses=0, cycles=0, rowN=0, ended=false;
+var totalSec=0,compSec=0,totalInt=null,compInt=null;
+var pauses=0,cycles=0,rowN=0,ended=false;
 var deferredPrompt=null;
 
 function fmt(s){var m=Math.floor(s/60),x=s%60;return(m<10?'0':'')+m+':'+(x<10?'0':'')+x;}
@@ -388,26 +326,21 @@ function clock(){var d=new Date(),h=d.getHours(),m=d.getMinutes(),s=d.getSeconds
 function tick(){
   totalSec++;
   document.getElementById('disp-total').textContent=fmt(totalSec);
-  var ccf=totalSec>0?(compSec/totalSec*100):0;
-  var big=document.getElementById('ccf-big');
-  var fill=document.getElementById('ccf-fill');
-  var hint=document.getElementById('ccf-hint');
+  var ccf=(compSec/totalSec*100);
+  var big=document.getElementById('ccf-big'),fill=document.getElementById('ccf-fill'),hint=document.getElementById('ccf-hint');
   big.textContent=ccf.toFixed(1)+'%';
   fill.style.width=Math.min(ccf,100)+'%';
   if(ccf>=80){big.className='ccf-big good';fill.style.background='#1D9E75';hint.textContent='Excellent — AHA target met (≥ 80%)';}
   else if(ccf>=60){big.className='ccf-big warn';fill.style.background='#EF9F27';hint.textContent='Acceptable — push for ≥ 80%';}
-  else{big.className='ccf-big bad';fill.style.background='#E24B4A';hint.textContent='Below target — resume compressions';}
+  else{big.className='ccf-big bad';fill.style.background='#E24B4A';hint.textContent='Below target — start or resume compressions';}
 }
 
 function compTick(){compSec++;document.getElementById('disp-comp').textContent=fmt(compSec);}
 
-function setStatus(dot,txt){
-  document.getElementById('status-dot').className='status-dot '+dot;
-  document.getElementById('status-txt').textContent=txt;
-}
+function setStatus(dot,txt){document.getElementById('status-dot').className='status-dot '+dot;document.getElementById('status-txt').textContent=txt;}
 
 function showPhase(p){
-  ['idle','running','paused','ended'].forEach(function(x){
+  ['idle','code','running','paused','ended'].forEach(function(x){
     var el=document.getElementById('phase-'+x);
     if(el) el.style.display=x===p?(x==='idle'||x==='ended'?'block':'grid'):'none';
   });
@@ -429,22 +362,29 @@ function logRow(ev,pillCls){
   document.getElementById('log-count').textContent=rowN+' event'+(rowN!==1?'s':'');
 }
 
-function startCPR(){
+function startCode(){
   if(ended)return;
-  cycles=1;
   totalInt=setInterval(tick,1000);
-  compInt=setInterval(compTick,1000);
   document.getElementById('sub-total').textContent='running';
+  document.getElementById('card-total').classList.add('code-running');
+  document.getElementById('log-section').style.display='block';
+  document.getElementById('ccf-hint').textContent='Code running — start compressions';
+  setStatus('dot-blue','Code running — compressions not yet started');
+  showPhase('code');
+  logRow('Code started','pill-code');
+}
+
+function startComp(){
+  if(ended)return;
+  cycles++;
+  compInt=setInterval(compTick,1000);
   document.getElementById('sub-comp').textContent='active';
+  document.getElementById('card-total').classList.remove('code-running');
   document.getElementById('card-total').classList.add('active');
   document.getElementById('card-comp').classList.add('active');
-  document.getElementById('log-section').style.display='block';
-  document.getElementById('ccf-big').className='ccf-big bad';
-  document.getElementById('ccf-fill').style.background='#E24B4A';
-  document.getElementById('ccf-hint').textContent='Compressions running — CCF building...';
   setStatus('dot-green','Compressions active');
   showPhase('running');
-  logRow('CPR started','pill-start');
+  logRow('Compressions started','pill-start');
 }
 
 function stopComp(){
@@ -476,8 +416,8 @@ function endCPR(){
   clearInterval(totalInt);clearInterval(compInt);totalInt=null;compInt=null;
   document.getElementById('sub-total').textContent='ended';
   document.getElementById('sub-comp').textContent='final';
-  document.getElementById('card-total').classList.remove('active');
-  document.getElementById('card-comp').classList.remove('active','paused');
+  document.getElementById('card-total').className='timer-card';
+  document.getElementById('card-comp').className='timer-card';
   setStatus('dot-gray','CPR session ended');
   showPhase('ended');
   logRow('CPR ended','pill-end');
@@ -485,10 +425,8 @@ function endCPR(){
 }
 
 function showSummary(){
-  var ccf=totalSec>0?(compSec/totalSec*100):0;
-  var noflow=totalSec-compSec;
-  var card=document.getElementById('summary-card');
-  card.classList.add('show');
+  var ccf=totalSec>0?(compSec/totalSec*100):0,noflow=totalSec-compSec;
+  document.getElementById('summary-card').classList.add('show');
   var sv=document.getElementById('s-ccf');
   sv.textContent=ccf.toFixed(1)+'%';
   document.getElementById('s-total').textContent=fmt(totalSec);
@@ -497,19 +435,9 @@ function showSummary(){
   document.getElementById('s-pauses').textContent=pauses;
   document.getElementById('s-cycles').textContent=cycles;
   var vb=document.getElementById('verdict-box');
-  if(ccf>=80){
-    vb.className='verdict good';
-    vb.textContent='Excellent CPR quality — CCF '+ccf.toFixed(1)+'% meets the AHA high-performance target (≥ 80%).';
-    sv.className='sm-val good';
-  } else if(ccf>=60){
-    vb.className='verdict warn';
-    vb.textContent='Acceptable — CCF '+ccf.toFixed(1)+'% meets the minimum (≥ 60%) but falls short of the ≥ 80% target. Review pause events.';
-    sv.className='sm-val warn';
-  } else {
-    vb.className='verdict bad';
-    vb.textContent='Suboptimal — CCF '+ccf.toFixed(1)+'% is below the 60% minimum. Significant no-flow time recorded.';
-    sv.className='sm-val bad';
-  }
+  if(ccf>=80){vb.className='verdict good';vb.textContent='Excellent CPR quality — CCF '+ccf.toFixed(1)+'% meets the AHA high-performance target (≥ 80%).';sv.className='sm-val good';}
+  else if(ccf>=60){vb.className='verdict warn';vb.textContent='Acceptable — CCF '+ccf.toFixed(1)+'% meets the minimum (≥ 60%) but falls short of the ≥ 80% target. Review pause events.';sv.className='sm-val warn';}
+  else{vb.className='verdict bad';vb.textContent='Suboptimal — CCF '+ccf.toFixed(1)+'% is below the 60% minimum. Significant no-flow time recorded.';sv.className='sm-val bad';}
 }
 
 function resetAll(){
@@ -521,7 +449,7 @@ function resetAll(){
   document.getElementById('ccf-big').className='ccf-big neutral';
   document.getElementById('ccf-fill').style.width='0%';
   document.getElementById('ccf-fill').style.background='#b4b2a9';
-  document.getElementById('ccf-hint').textContent='Start CPR to begin tracking';
+  document.getElementById('ccf-hint').textContent='Start Code to begin tracking';
   document.getElementById('sub-total').textContent='not started';
   document.getElementById('sub-comp').textContent='—';
   document.getElementById('card-total').className='timer-card';
@@ -530,33 +458,17 @@ function resetAll(){
   document.getElementById('log-count').textContent='0 events';
   document.getElementById('log-section').style.display='none';
   document.getElementById('summary-card').classList.remove('show');
-  setStatus('dot-gray','Ready — press Start CPR to begin');
+  setStatus('dot-gray','Ready — press Start Code to begin');
   showPhase('idle');
 }
 
-// PWA install prompt
-window.addEventListener('beforeinstallprompt',function(e){
-  e.preventDefault();
-  deferredPrompt=e;
-  document.getElementById('install-banner').style.display='flex';
-});
-document.getElementById('install-btn').addEventListener('click',function(){
-  if(deferredPrompt){
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(function(){
-      deferredPrompt=null;
-      document.getElementById('install-banner').style.display='none';
-    });
-  }
-});
-window.addEventListener('appinstalled',function(){
-  document.getElementById('install-banner').style.display='none';
-});
+function toggleAbout(){var o=document.getElementById('about-overlay');o.style.display=o.style.display==='flex'?'none':'flex';}
+function closeAbout(){document.getElementById('about-overlay').style.display='none';}
 
-// Service worker
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js').catch(function(e){console.warn('SW:',e);});
-}
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;document.getElementById('install-banner').style.display='flex';});
+document.getElementById('install-btn').addEventListener('click',function(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(function(){deferredPrompt=null;document.getElementById('install-banner').style.display='none';});}});
+window.addEventListener('appinstalled',function(){document.getElementById('install-banner').style.display='none';});
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(e){console.warn('SW:',e);});}
 </script>
 </body>
 </html>
